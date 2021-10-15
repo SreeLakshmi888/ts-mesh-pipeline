@@ -1,9 +1,16 @@
 FROM python:3.8-slim-buster
 
+WORKDIR /app
+
 COPY requirements.txt .
 
-RUN pip3 install -r requirements.txt
+RUN -r requirements.txt
 
-COPY . .
+ADD scraper.py .
+
+ADD cleaning.py .
+
+ADD geocoder.py .
 
 ENTRYPOINT ["python3"]
+
